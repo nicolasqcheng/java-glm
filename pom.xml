@@ -120,7 +120,7 @@
                         <artifactId>maven-surefire-plugin</artifactId>
                         <version>${surefire.version}</version>
                         <configuration>
-                            <skipTests>true</skipTests>
+                            <skipTests>false</skipTests>
                             <argLine>-Dfile.encoding=UTF-8</argLine>
                         </configuration>
                     </plugin>
@@ -508,14 +508,16 @@
             <artifactId>jama</artifactId>
             <version>${jama.version}</version>
         </dependency>
-
-
         <dependency>
             <groupId>com.github.chen0040</groupId>
             <artifactId>java-local-search</artifactId>
             <version>1.0.1</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.github.chen0040</groupId>
+            <artifactId>java-glm</artifactId>
+            <version>1.0.6</version>
+        </dependency>
     </dependencies>
 
 
