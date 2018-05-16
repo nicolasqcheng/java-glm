@@ -1,8 +1,7 @@
 package com.github.chen0040.glm.solvers;
 
-
 import com.github.chen0040.data.frame.InputDataColumn;
-import com.github.chen0040.data.utils.CollectionUtils;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,20 +31,20 @@ public class Coefficients {
 
     public Coefficients() {
     }
-
+    //Need to refactor
     public List<Double> getValues() {
         return CollectionUtils.clone(values, x -> x);
     }
-
+    //Need to refactor
     public void setValues(List<Double> values) {
         this.values.clear();
         this.values.addAll(CollectionUtils.clone(values, x -> x));
     }
-
+    //Need to refactor
     public List<String> getDescriptors() {
         return CollectionUtils.clone(descriptors, x -> x);
     }
-
+    //Need to refactor
     public void setDescriptors(List<String> descriptors){
         this.descriptors.clear();
         this.descriptors.addAll(CollectionUtils.clone(descriptors, x -> x));

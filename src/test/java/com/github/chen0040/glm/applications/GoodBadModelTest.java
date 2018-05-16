@@ -16,6 +16,8 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 
 import java.util.Random;
 
@@ -52,20 +54,47 @@ public class GoodBadModelTest {
 
     System.out.println(crossValidationData.head(10));
     Glm glm = Glm.linear();
-      //glm.setDistributionFamily(GlmDistributionFamily.Normal);
+      glm.setDistributionFamily(GlmDistributionFamily.Normal);
       glm.setSolverType(GlmSolverType.GlmIrls);
       glm.fit(trainingData);
-      BinaryClassifierEvaluator evaluator = new BinaryClassifierEvaluator();
-      for(int i = 0; i < crossValidationData.rowCount(); ++i){
-        double predicted = glm.transform(crossValidationData.row(i));
-        double actual = crossValidationData.row(i).target();
+
+      InputStream testStream = FileUtils.getResource("sit_good_bad_test_set.csv");
+      DataFrame testData = DataQuery.csv(",")
+            .from(testStream)
+            .selectColumn(0).asNumeric().asInput("meanMagAcc")
+            .selectColumn(1).asNumeric().asInput("stdMagAcc")
+            .selectColumn(2).asNumeric().asInput("meanRoll")
+            .selectColumn(3).asNumeric().asInput("stdRoll")
+            .selectColumn(4).asNumeric().asInput("meanPitch")
+            .selectColumn(5).asNumeric().asInput("stdPitch")
+            .selectColumn(6).asNumeric().asInput("meanYaw")
+            .selectColumn(7).asNumeric().asInput("stdYaw")
+            //.selectColumn(8).asNumeric().asOutput("moving")
+            .selectColumn(9).asNumeric().asOutput("label")
+            //.selectColumn(10).asNumeric().asOutput("fileId")
+            .build();
+
+     BinaryClassifierEvaluator evaluator = new BinaryClassifierEvaluator();
+     String fn = "./output_sit_good_bad_test_data_full.txt";
+     FileWriter fw = new FileWriter(fn);
+     BufferedWriter bw = new BufferedWriter(fw);
+      for(int i = 0; i < testData.rowCount(); ++i){
+        double predicted = glm.transform(testData.row(i));
+        double actual = testData.row(i).target();
+
         logger.info("predicted: {}\texpected: {}", predicted, actual);
+        bw.write(predicted + "," + actual);
+        bw.newLine();
         //evaluator.evaluate(actual, predicted);
      }
+     bw.close();
+     fw.close();
 
      logger.info("Coefficients: {}", glm.getCoefficients());
      //evaluator.report();
 
+        //out.write(glm.getCoefficients().toString());
     }
+
 }
  
