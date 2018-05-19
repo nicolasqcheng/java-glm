@@ -5,26 +5,26 @@ import java.util.List;
 import java.util.function.Function;
 
 /**
- * Created by xschen on 1/5/2017.
+ * Created by nicolasqcheng on 5/15/2018.
  */
 public class CollectionUtils {
-   public static <T> List<T> clone(List<T> that, Function<T, T> transformer) {
+   public static <T> List<T> clone(List<T> that) {
       List<T> result = new ArrayList<>();
       for(int i=0; i < that.size(); ++i){
-         result.add(transformer.apply(that.get(i)));
+         result.add(that.get(i));
       }
       return result;
    }
 
 
-   public static <T> List<T> toList(T[] that, Function<T, T> transformer) {
+   public static <T> List<T> toList(T[] that) {
       List<T> result = new ArrayList<>();
       for(int i=0; i < that.length; ++i){
-         result.add(transformer.apply(that[i]));
+         result.add(that[i]);
       }
       return result;
    }
-
+/*
    public static List<Double> toList(double[] that) {
       List<Double> result = new ArrayList<>();
       for(int i=0; i < that.length; ++i){
@@ -32,7 +32,7 @@ public class CollectionUtils {
       }
       return result;
    }
-
+*/
    public static <T> void exchange(List<T> a, int i, int j) {
       T temp = a.get(i);
       a.set(i, a.get(j));

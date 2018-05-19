@@ -19,7 +19,12 @@ public class OneVsOneGlmClassifier {
    private boolean shuffleData = false;
    private List<String> classLabels = new ArrayList<>();
    //Need to refactor
-   private Supplier<Glm> generator = () -> Glm.linear();
+   //private Supplier<Glm> generator = () -> Glm.linear();
+   private Supplier<Glm> generator = new Supplier<Glm>() {
+        public Glm get() {
+          return Glm.linear();
+        }
+   };
 
    private static String BINARY_LABEL = "success";
 

@@ -33,21 +33,21 @@ public class Coefficients {
     }
     //Need to refactor
     public List<Double> getValues() {
-        return CollectionUtils.clone(values, x -> x);
+        return CollectionUtils.clone(values);
     }
     //Need to refactor
     public void setValues(List<Double> values) {
         this.values.clear();
-        this.values.addAll(CollectionUtils.clone(values, x -> x));
+        this.values.addAll(CollectionUtils.clone(values));
     }
     //Need to refactor
     public List<String> getDescriptors() {
-        return CollectionUtils.clone(descriptors, x -> x);
+        return CollectionUtils.clone(descriptors);
     }
     //Need to refactor
     public void setDescriptors(List<String> descriptors){
         this.descriptors.clear();
-        this.descriptors.addAll(CollectionUtils.clone(descriptors, x -> x));
+        this.descriptors.addAll(CollectionUtils.clone(descriptors));
     }
 
     public int size() {

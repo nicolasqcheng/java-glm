@@ -42,12 +42,24 @@ public class GlmAlgorithm implements Cloneable {
     protected double mRegularizationLambda = 0;
     protected GlmDistributionFamily mDistributionFamily;
     protected GlmStatistics mStats = new GlmStatistics();
+    /*
     protected TerminationEvaluationMethod shouldTerminate = (state, iteration) -> {
         if (!state.improved() || state.improvement() < mTol) {
             return false;
         }
         return iteration >= maxIters;
     };
+    */
+    protected TerminationEvaluationMethod shouldTerminate = new TerminationEvaluationMethod()
+    {
+        public boolean shouldTerminate(NumericSolutionUpdateResult state, int iteration) { 
+            if (!state.improved() || state.improvement() < mTol) {
+                return false;
+            }
+            return iteration >= maxIters;
+        }
+    };
+    
     protected double[] glmCoefficients;
     private LocalSearch solver;
     private double[][] A; //first column of A corresponds to x_0 = 1
