@@ -97,7 +97,7 @@
 
         <fastjson.version>1.2.24</fastjson.version>
 
-        <lombok.version>1.16.6</lombok.version>
+ <!--       <lombok.version>1.16.6</lombok.version> -->
 
         <jama.version>1.0.3</jama.version>
     </properties>
@@ -489,14 +489,14 @@
 
 
         <!-- Utilities -->
-
+<!-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
             <version>${lombok.version}</version>
         </dependency>
-
+</-->
         <dependency>
             <groupId>com.github.chen0040</groupId>
             <artifactId>java-data-frame</artifactId>

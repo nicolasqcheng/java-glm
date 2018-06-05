@@ -1,4 +1,4 @@
-package com.github.chen0040.glm.utils;
+package com.github.chen0040.glm.fileUtils;
 
 import java.io.File;
 import java.io.IOException;

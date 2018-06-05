@@ -9,7 +9,7 @@ import com.github.chen0040.data.utils.TupleTwo;
 import com.github.chen0040.glm.enums.GlmSolverType;
 import com.github.chen0040.data.evaluators.BinaryClassifierEvaluator;
 import com.github.chen0040.glm.solvers.Glm;
-import com.github.chen0040.glm.utils.FileUtils;
+import com.github.chen0040.glm.fileUtils.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
@@ -72,7 +72,7 @@ public class LogisticRegressionUnitTest {
             threshold = prob;
          }
       }
-      logger.info("threshold: {}",threshold);
+      //logger.info("threshold: {}",threshold);
 
 
       BinaryClassifierEvaluator evaluator = new BinaryClassifierEvaluator();
@@ -82,7 +82,7 @@ public class LogisticRegressionUnitTest {
          boolean predicted = prob > 0.5;
          boolean actual = crossValidationData.row(i).target() > 0.5;
          evaluator.evaluate(actual, predicted);
-         logger.info("probability of positive: {}", prob);
+         //logger.info("probability of positive: {}", prob);
          logger.info("predicted: {}\texpected: {}", predicted, actual);
       }
 

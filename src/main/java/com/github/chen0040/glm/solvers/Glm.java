@@ -6,9 +6,7 @@ import com.github.chen0040.glm.enums.GlmSolverType;
 import com.github.chen0040.glm.metrics.GlmStatistics;
 import com.github.chen0040.data.frame.DataRow;
 import com.github.chen0040.glm.enums.GlmDistributionFamily;
-import com.github.chen0040.data.utils.CollectionUtils;
-import lombok.Getter;
-import lombok.Setter;
+import com.github.chen0040.glm.utils.CollectionUtils;
 import org.apache.commons.math3.distribution.NormalDistribution;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,8 +17,7 @@ import java.util.function.Supplier;
 /**
  * Created by xschen on 16/8/15.
  */
-@Getter
-@Setter
+
 public class Glm {
 
     private static final Logger logger = LoggerFactory.getLogger(Glm.class);
@@ -30,6 +27,45 @@ public class Glm {
     private GlmSolverType solverType;
     private Coefficients coefficients;
     private String name;
+
+    public void setSolver(GlmAlgorithm solver) {
+        this.solver = solver;
+    }
+
+    public GlmAlgorithm getSolver() {
+        return this.solver;
+    }
+    public void setDistributionFamily(GlmDistributionFamily distributionFamily) {
+        this.distributionFamily = distributionFamily;
+    }
+
+    public GlmDistributionFamily getDistributionFamily() {
+        return distributionFamily;
+    }
+
+    public void setSolverType(GlmSolverType solverType) {
+        this.solverType = solverType;
+    }
+
+    public GlmSolverType getSolverType() {
+        return solverType;
+    }
+
+    public void setCoefficients(Coefficients coefficients) {
+        this.coefficients = coefficients;
+    }
+
+    public Coefficients getCoefficients(){
+        return coefficients;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
 
 
     public void copy(Glm that){
@@ -56,21 +92,6 @@ public class Glm {
         this(GlmSolverType.GlmIrls,GlmDistributionFamily.Normal);
     }
 
-    public GlmDistributionFamily getDistributionFamily() {
-        return distributionFamily;
-    }
-
-    public void setDistributionFamily(GlmDistributionFamily distributionFamily) {
-        this.distributionFamily = distributionFamily;
-    }
-
-    public GlmSolverType getSolverType() {
-        return solverType;
-    }
-
-    public void setSolverType(GlmSolverType solverType) {
-        this.solverType = solverType;
-    }
     
     public double transform(DataRow tuple) {
         double[] x0 = tuple.toArray();
@@ -134,10 +155,6 @@ public class Glm {
         return solver != null ? solver.getStatistics() : null;
     }
 
-    public Coefficients getCoefficients(){
-        return coefficients;
-    }
-
 
     public static Glm logistic() {
         Glm glm = new Glm();
@@ -152,12 +169,6 @@ public class Glm {
         //glm.setSolverType(GlmSolverType.GlmIrlsQr);
         return glm;
     }
-
-
-    public String getName() {
-        return name;
-    }
-
 
     public static OneVsOneGlmClassifier oneVsOne() {
         return new OneVsOneGlmClassifier();

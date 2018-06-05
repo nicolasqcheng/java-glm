@@ -6,7 +6,7 @@ import com.github.chen0040.data.frame.DataQuery;
 import com.github.chen0040.data.evaluators.ClassifierEvaluator;
 import com.github.chen0040.glm.solvers.Glm;
 import com.github.chen0040.glm.solvers.OneVsOneGlmClassifier;
-import com.github.chen0040.glm.utils.FileUtils;
+import com.github.chen0040.glm.fileUtils.FileUtils;
 import com.github.chen0040.data.utils.TupleTwo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,6 +1,5 @@
 package com.github.chen0040.glm.solvers;
 
-
 import com.github.chen0040.glm.links.*;
 import com.github.chen0040.glm.metrics.GlmStatistics;
 import com.github.chen0040.ls.GradientEvaluationMethod;
@@ -11,6 +10,7 @@ import com.github.chen0040.glm.enums.GlmDistributionFamily;
 import com.github.chen0040.glm.maths.MatrixOp;
 import com.github.chen0040.ls.CostEvaluationMethod;
 import com.github.chen0040.ls.solutions.NumericSolution;
+import com.github.chen0040.ls.solutions.NumericSolutionUpdateResult;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.Random;

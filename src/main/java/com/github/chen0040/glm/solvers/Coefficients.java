@@ -1,8 +1,6 @@
 package com.github.chen0040.glm.solvers;
-
 import com.github.chen0040.data.frame.InputDataColumn;
-
-
+import com.github.chen0040.glm.utils.CollectionUtils;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +14,7 @@ public class Coefficients {
 
     public void copy(Coefficients rhs){
         values.clear();
-        values.addAll(CollectionUtils.clone(rhs.values, x -> x));
+        values.addAll(CollectionUtils.clone(rhs.values));
         descriptors.clear();
         for(int i=0; i < rhs.descriptors.size(); ++i){
             descriptors.add(rhs.descriptors.get(i));

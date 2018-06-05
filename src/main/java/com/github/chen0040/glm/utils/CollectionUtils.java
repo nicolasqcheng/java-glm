@@ -1,4 +1,4 @@
-package com.github.chen0040.glm.solvers;
+package com.github.chen0040.glm.utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ public class CollectionUtils {
       return result;
    }
 
-
+/*
    public static <T> List<T> toList(T[] that) {
       List<T> result = new ArrayList<>();
       for(int i=0; i < that.length; ++i){
@@ -24,7 +24,7 @@ public class CollectionUtils {
       }
       return result;
    }
-/*
+*/
    public static List<Double> toList(double[] that) {
       List<Double> result = new ArrayList<>();
       for(int i=0; i < that.length; ++i){
@@ -32,7 +32,7 @@ public class CollectionUtils {
       }
       return result;
    }
-*/
+
    public static <T> void exchange(List<T> a, int i, int j) {
       T temp = a.get(i);
       a.set(i, a.get(j));
